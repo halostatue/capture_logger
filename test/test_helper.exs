@@ -1,0 +1,2 @@
+ExUnit.start()
+CaptureLogger.start()
