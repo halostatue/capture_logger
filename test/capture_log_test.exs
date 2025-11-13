@@ -3,8 +3,7 @@
 # SPDX-FileCopyrightText: 2021 The Elixir Team
 # SPDX-FileCopyrightText: 2012 Plataformatec
 
-# Code.require_file("../test_helper.exs", __DIR__)
-
+# credo:disable-for-this-file Credo.Check.Warning.MissedMetadataKeyInLoggerConfig
 defmodule CaptureLoggerTest do
   use ExUnit.Case
 
@@ -211,6 +210,18 @@ defmodule CaptureLoggerTest do
       assert log == "id=123 | hello"
     end
 
+    test "respects the :metadata option with a formatter" do
+      options = [formatter: Basic, metadata: [:id]]
+
+      assert {4, log} =
+               with_log(options, fn ->
+                 Logger.info("hello", id: 123)
+                 2 + 2
+               end)
+
+      assert %{"metadata" => %{"id" => 123}} = Jason.decode!(log)
+    end
+
     @tag capture_log: true
     test "respect options with capture_log: true" do
       options = [format: "$metadata| $message", metadata: [:id], colors: [enabled: false]]
@@ -223,6 +234,46 @@ defmodule CaptureLoggerTest do
 
       assert log == "id=123 | hello"
     end
+  end
+
+  @tag capture_log: true
+  test "respects the :metadata option with a formatter and capture_log: true" do
+    options = [formatter: Basic, metadata: [:id]]
+
+    assert {4, log} =
+             with_log(options, fn ->
+               Logger.info("hello", id: 123)
+               2 + 2
+             end)
+
+    assert %{"metadata" => %{"id" => 123}} = Jason.decode!(log)
+  end
+
+  test "handles complex :metadata with a formatter" do
+    options = [formatter: Basic, metadata: [:details]]
+
+    assert {4, log} =
+             with_log(options, fn ->
+               Logger.info("hello",
+                 details: %{
+                   customer_id: 456,
+                   list: ["a", "b", "c"],
+                   tuple: {1, 2}
+                 }
+               )
+
+               2 + 2
+             end)
+
+    assert %{
+             "metadata" => %{
+               "details" => %{
+                 "customer_id" => 456,
+                 "list" => ["a", "b", "c"],
+                 "tuple" => [1, 2]
+               }
+             }
+           } = Jason.decode!(log)
   end
 
   defp decode_lines(lines) do
