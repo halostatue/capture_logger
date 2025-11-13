@@ -276,6 +276,38 @@ defmodule CaptureLoggerTest do
            } = Jason.decode!(log)
   end
 
+  describe "tests from CaptureLogger docs" do
+    test "example" do
+      {result, log} =
+        with_log([formatter: Basic.new()], fn ->
+          Logger.error("log msg")
+          2 + 2
+        end)
+
+      assert result == 4
+      assert Jason.decode!(log)["message"] == "log msg"
+    end
+
+    test "check multiple captures concurrently" do
+      fun = fn ->
+        for msg <- ["hello", "hi"] do
+          log =
+            assert capture_log(
+                     [formatter: Basic],
+                     fn -> Logger.error(msg) end
+                   )
+
+          assert Jason.decode!(log)["message"] == msg
+        end
+
+        Logger.debug("testing")
+      end
+
+      assert capture_log([formatter: Basic], fun) =~ "hello"
+      assert capture_log([formatter: Basic], fun) =~ ~s("message":"testing")
+    end
+  end
+
   defp decode_lines(lines) do
     lines
     |> String.trim()

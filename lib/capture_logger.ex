@@ -13,12 +13,13 @@ defmodule CaptureLogger do
   defmodule AssertionTest do
     use ExUnit.Case
 
+    alias LoggerJSON.Formatters.Basic
     import CaptureLogger
     require Logger
 
     test "example" do
       {result, log} =
-        with_log([formatter: LoggerJSON.Basic.new())], fn ->
+        with_log([formatter: Basic.new()], fn ->
           Logger.error("log msg")
           2 + 2
         end)
@@ -31,17 +32,17 @@ defmodule CaptureLogger do
       fun = fn ->
         for msg <- ["hello", "hi"] do
           log = assert capture_log(
-            [formatter: LoggerJSON.Basic.new()],
+            [formatter: Basic],
             fn -> Logger.error(msg) end
           )
-          assert Jason.decode!(log) message == msg
+          assert Jason.decode!(log)["message"] == msg
         end
 
         Logger.debug("testing")
       end
 
-      assert capture_log(fun) =~ "hello"
-      assert capture_log(fun) =~ "\"message\":\"testing\""
+      assert capture_log([formatter: Basic],fun) =~ "hello"
+      assert capture_log([formatter: Basic], fun) =~ "\"message\":\"testing\""
     end
   end
   ```
