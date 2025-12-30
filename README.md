@@ -80,4 +80,4 @@ CaptureLogger follows [Semantic Versioning 2.0][semver].
 [12f]: https://12factor.net/
 [cl]: https://hexdocs.com/ex_unit/capture_log.html
 [docs]: https://hexdocs.pm/ex_unit/ExUnit.CaptureLog.html
-[semver]: http://semver.org/
+[semver]: https://semver.org/
