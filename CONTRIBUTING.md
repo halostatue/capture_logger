@@ -48,7 +48,7 @@ pull request (see [LICENCE](LICENCE.md)).
 Any contribution (bug, feature request, or pull request) that uses undeclared AI
 output will be rejected.
 
-### Commit Conventions
+## Commit Conventions
 
 CaptureLogger has adopted a variation of the Conventional Commits format for
 commit messages. The following types are permitted:

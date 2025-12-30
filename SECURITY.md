@@ -14,8 +14,8 @@ the previous major version ending immediately.
 
 Prefer creating a [private vulnerability report][advisory] with GitHub.
 Alternatively, send an email to [security@elixir.halostatue.ca][email] with the
-text `TableauSocialExtension` in the subject. Emails sent to this address should
-be encrypted using [age][age] with the following public key:
+text `CaptureLogger` in the subject. Emails sent to this address should be
+encrypted using [age][age] with the following public key:
 
 ```
 age1fc6ngxmn02m62fej5cl30lrvwmxn4k3q2atqu53aatekmnqfwumqj4g93w
