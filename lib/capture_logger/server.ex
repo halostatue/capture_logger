@@ -26,7 +26,7 @@ defmodule CaptureLogger.Server do
 
   ## Callbacks
 
-  @impl true
+  @impl GenServer
   def init(:ok) do
     :ets.new(@name, [:named_table, :public, :set])
 
@@ -38,7 +38,7 @@ defmodule CaptureLogger.Server do
     {:ok, state}
   end
 
-  @impl true
+  @impl GenServer
   def handle_call(call, from, state)
 
   def handle_call({:log_capture_on, pid, string_io, opts}, _from, config) do
@@ -80,7 +80,7 @@ defmodule CaptureLogger.Server do
     {:reply, :ok, config}
   end
 
-  @impl true
+  @impl GenServer
   def handle_info({:DOWN, ref, _, _, _}, config) do
     config = remove_log_capture(ref, config)
     {:noreply, config}
