@@ -117,7 +117,8 @@ defmodule CaptureLogger.Server do
     {:trap_exit, trapping_exits?} = Process.info(self(), :trap_exit)
 
     tasks =
-      :ets.tab2list(@ets)
+      @ets
+      |> :ets.tab2list()
       |> Enum.filter(fn {_ref, _string_io, level, _formatter_mod, _formatter_config} ->
         :logger.compare_levels(event.level, level) in [:gt, :eq]
       end)
