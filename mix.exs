@@ -3,7 +3,7 @@ defmodule CaptureLogger.MixProject do
 
   @app :capture_logger
   @project_url "https://github.com/halostatue/capture_logger"
-  @version "1.0.0"
+  @version "1.0.1"
 
   def project do
     [
@@ -21,7 +21,7 @@ defmodule CaptureLogger.MixProject do
       test_coverage: test_coverage(),
       elixirc_paths: elixirc_paths(Mix.env()),
       dialyzer: [
-        plt_add_apps: [:mix],
+        plt_add_apps: [:credo, :mix],
         plt_local_path: "priv/plts/project.plt",
         plt_core_path: "priv/plts/core.plt"
       ]
@@ -59,31 +59,33 @@ defmodule CaptureLogger.MixProject do
 
   defp deps do
     [
-      {:castore, "~> 1.0", only: [:test]},
+      {:castore, "~> 1.0", optional: true},
+      {:jason, "~> 1.0", optional: true},
+      {:logger_json, "~> 6.0 or ~> 7.0", optional: true},
       {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.18", only: [:test]},
       {:ex_doc, "~> 0.29", only: [:dev, :test], runtime: false},
-      {:logger_json, "~> 6.0 or ~> 7.0", only: [:dev, :test]},
-      {:jason, "~> 1.0", only: [:dev, :test]},
-      {:quokka, "~> 2.6", only: [:dev, :test], runtime: false}
+      {:excoveralls, "~> 0.18", only: [:test]},
+      {:mix_audit, "~> 2.1", only: [:dev, :test]},
+      {:quokka, "~> 2.6", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.14", only: [:dev, :test]}
     ]
   end
 
   defp docs do
     [
-      main: "CaptureLogger",
+      main: "readme",
       extras: [
         "README.md",
-        "CONTRIBUTING.md": [filename: "CONTRIBUTING.md", title: "Contributing"],
-        "CODE_OF_CONDUCT.md": [filename: "CODE_OF_CONDUCT.md", title: "Code of Conduct"],
-        "CHANGELOG.md": [filename: "CHANGELOG.md", title: "CHANGELOG"],
-        "LICENCE.md": [filename: "LICENCE.md", title: "Licence"],
+        "CONTRIBUTING.md": [filename: "CONTRIBUTING", title: "Contributing"],
+        "CODE_OF_CONDUCT.md": [filename: "CODE_OF_CONDUCT", title: "Code of Conduct"],
+        "CHANGELOG.md": [filename: "CHANGELOG", title: "CHANGELOG"],
+        "LICENCE.md": [filename: "LICENCE", title: "Licence"],
         "licences/APACHE-2.0.txt": [
-          filename: "APACHE-2.0.txt",
+          filename: "APACHE-2.0",
           title: "Apache License, version 2.0"
         ],
-        "licences/dco.txt": [filename: "dco.txt", title: "Developer Certificate of Origin"]
+        "licences/dco.txt": [filename: "dco", title: "Developer Certificate of Origin"]
       ],
       source_ref: "v#{@version}",
       source_url: @project_url,

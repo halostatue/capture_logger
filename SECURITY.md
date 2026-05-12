@@ -13,11 +13,10 @@ the previous major version ending immediately.
 CaptureLogger supports the three most recent versions of Elixir and supported
 [Erlang/OTP versions][otp-versions].
 
-As of December 2025, the support list is:
+As of May 2026, the support list is:
 
 | Elixir | Erlang         |
 | ------ | -------------- |
-| 1.16   | 24, 25, 26     |
 | 1.17   | 25, 26, 27     |
 | 1.18   | 25, 26, 27, 28 |
 | 1.19   | 26, 27, 28     |
