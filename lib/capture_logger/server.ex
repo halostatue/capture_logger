@@ -130,16 +130,7 @@ defmodule CaptureLogger.Server do
           string_io
         end
       )
-      |> Enum.map(fn {{formatter_mod, formatter_config}, string_ios} ->
-        Task.async(fn ->
-          chardata = formatter_mod.format(event, formatter_config)
-
-          # Simply send, do not wait for reply
-          for string_io <- string_ios do
-            send(string_io, {:io_request, self(), make_ref(), {:put_chars, :unicode, chardata}})
-          end
-        end)
-      end)
+      |> Enum.map(&build_task(&1, event))
 
     Task.await_many(tasks)
 
@@ -152,5 +143,16 @@ defmodule CaptureLogger.Server do
     end
 
     :ok
+  end
+
+  defp build_task({{formatter_mod, formatter_config}, string_ios}, event) do
+    Task.async(fn ->
+      chardata = formatter_mod.format(event, formatter_config)
+
+      # Simply send, do not wait for reply
+      for string_io <- string_ios do
+        send(string_io, {:io_request, self(), make_ref(), {:put_chars, :unicode, chardata}})
+      end
+    end)
   end
 end

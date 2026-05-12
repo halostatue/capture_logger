@@ -1,10 +1,12 @@
 # Licence
 
-- SPDX-License-Identifier: [Apache-2.0][apache-2]
+<!-- SPDX-License-Identifier: Apache-2.0 -->
 
 `CaptureLogger` is copyright 2025 Austin Ziegler and is licensed under the
 [Apache License, version 2.0](licences/APACHE-2.0.txt). It is adapted from
 ExUnit.CaptureLog and ExUnit.CaptureServer modules in [Elixir][elixir].
+
+- SPDX License: [Apache-2.0][apache-2]
 
 ## Developer Certificate of Origin
 

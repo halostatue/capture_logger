@@ -1,7 +1,9 @@
 # CaptureLogger
 
-[![Hex.pm][shield-hex]][hexpm] [![Hex Docs][shield-docs]][docs]
-[![Apache 2.0][shield-licence]][licence] ![Coveralls][shield-coveralls]
+[![Hex Version](https://img.shields.io/hexpm/v/capture_logger?style=for-the-badge Hex Version)](https://hex.pm/packages/capture_logger)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg?style=for-the-badge)](https://hexdocs.pm/capture_logger)
+[![Apache 2.0](https://img.shields.io/hexpm/l/capture_logger?style=for-the-badge&label=licence)](https://github.com/halostatue/capture_logger/blob/main/LICENCE.md)
+![Coverage](https://img.shields.io/coverallsCoverage/github/halostatue/capture_logger?style=for-the-badge)
 
 - code :: <https://github.com/halostatue/capture_logger>
 - issues :: <https://github.com/halostatue/capture_logger/issues>
@@ -82,10 +84,4 @@ CaptureLogger follows [Semantic Versioning 2.0][semver].
 
 [cl]: https://hexdocs.pm/ex_unit/ExUnit.CaptureLog.html
 [docs]: https://hexdocs.pm/capture_logger
-[hexpm]: https://hex.pm/packages/capture_logger
-[licence]: https://github.com/halostatue/capture_logger/blob/main/LICENCE.md
 [semver]: https://semver.org/
-[shield-coveralls]: https://img.shields.io/coverallsCoverage/github/halostatue/capture_logger?style=for-the-badge
-[shield-docs]: https://img.shields.io/badge/hex-docs-lightgreen.svg?style=for-the-badge "Hex Docs"
-[shield-hex]: https://img.shields.io/hexpm/v/capture_logger?style=for-the-badge "Hex Version"
-[shield-licence]: https://img.shields.io/hexpm/l/capture_logger?style=for-the-badge&label=licence "Apache 2.0"
