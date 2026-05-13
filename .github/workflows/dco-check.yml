@@ -28,9 +28,8 @@ jobs:
             api.github.com:443
             github.com:443
             release-assets.githubusercontent.com:443
-            
 
       - uses: KineticCafe/actions-dco@f7fe2fdfb5808e2528042be3919b67079100b96b # v3.0.0
         with:
           config: |
-            commit = true
+            comment = true
