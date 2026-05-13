@@ -1,9 +1,9 @@
 # CaptureLogger
 
-[![Hex Version](https://img.shields.io/hexpm/v/capture_logger?style=for-the-badge Hex Version)](https://hex.pm/packages/capture_logger)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg?style=for-the-badge)](https://hexdocs.pm/capture_logger)
-[![Apache 2.0](https://img.shields.io/hexpm/l/capture_logger?style=for-the-badge&label=licence)](https://github.com/halostatue/capture_logger/blob/main/LICENCE.md)
-![Coverage](https://img.shields.io/coverallsCoverage/github/halostatue/capture_logger?style=for-the-badge)
+[![Hex Version](https://img.shields.io/hexpm/v/capture_logger?style=for-the-badge "Hex Version")](https://hex.pm/packages/capture_logger)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg?style=for-the-badge "Hex Docs")](https://hexdocs.pm/capture_logger)
+[![Apache 2.0](https://img.shields.io/hexpm/l/capture_logger?style=for-the-badge&label=licence "Apache 2.0")](https://github.com/halostatue/capture_logger/blob/main/LICENCE.md)
+![Coverage](https://img.shields.io/coverallsCoverage/github/halostatue/capture_logger?style=for-the-badge "Coverage")
 
 - code :: <https://github.com/halostatue/capture_logger>
 - issues :: <https://github.com/halostatue/capture_logger/issues>
