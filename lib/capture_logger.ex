@@ -7,6 +7,14 @@ defmodule CaptureLogger do
   @moduledoc ~S"""
   Functionality to capture logs for testing.
 
+  > #### Not Required for Elixir 1.20 {: .info}
+  >
+  > ExUnit included with Elixir 1.20 includes a `formatter` option in its
+  > first parameter to [`with_log/2` and `capture_log/2`][wac] making this
+  > alternative implementation unnecessary for supported applications.
+
+  [wac]: https://ex-unit.hexdocs.pm/ExUnit.CaptureLog.html#functions
+
   ## Examples
 
   ```elixir
